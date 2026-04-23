@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ConsciousNode SoftWorks</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400&display=swap');
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --border: #222222;
+      --dim: #444444;
+      --mid: #888888;
+      --bright: #cccccc;
+      --white: #f0f0f0;
+      --accent: #7fff7f;
+      --accent-dim: #2a4a2a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--bg);
+      color: var(--bright);
+      font-family: 'IBM Plex Mono', monospace;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.4;
+    }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 80px 32px 120px;
+    }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 48px;
+      margin-bottom: 64px;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .org-label {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .tagline {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    /* Philosophy */
+    .philosophy {
+      border-left: 2px solid var(--accent-dim);
+      padding-left: 24px;
+      margin-bottom: 72px;
+      animation: fadeUp 0.8s ease 0.1s both;
+    }
+
+    .philosophy p {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 13px;
+      color: var(--mid);
+      line-height: 1.8;
+      margin-bottom: 8px;
+    }
+
+    .philosophy p:last-child { margin-bottom: 0; }
+
+    .philosophy strong {
+      color: var(--bright);
+      font-weight: 400;
+    }
+
+    /* Projects */
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 24px;
+    }
+
+    .projects {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-bottom: 72px;
+      animation: fadeUp 0.8s ease 0.2s both;
+    }
+
+    .project {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 24px;
+      padding: 20px 0;
+      border-top: 1px solid var(--border);
+      text-decoration: none;
+      transition: border-color 0.2s;
+      cursor: pointer;
+    }
+
+    .project:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project:hover {
+      border-top-color: var(--accent-dim);
+    }
+
+    .project:hover .project-name {
+      color: var(--accent);
+    }
+
+    .project:hover .project-arrow {
+      transform: translate(3px, -3px);
+      color: var(--accent);
+    }
+
+    .project-name {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 6px;
+      transition: color 0.2s;
+    }
+
+    .project-desc {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 13px;
+      color: var(--mid);
+      line-height: 1.6;
+      max-width: 480px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dim);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 2px;
+    }
+
+    .project-arrow {
+      font-size: 14px;
+      color: var(--dim);
+      transition: transform 0.2s, color 0.2s;
+      padding-top: 2px;
+      flex-shrink: 0;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+      animation: fadeUp 0.8s ease 0.35s both;
+    }
+
+    .footer-line {
+      font-size: 11px;
+      color: var(--dim);
+      line-height: 2;
+    }
+
+    .footer-line a {
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-line a:hover {
+      color: var(--accent);
+    }
+
+    .plaque {
+      font-size: 11px;
+      color: var(--accent-dim);
+      margin-top: 16px;
+      font-style: italic;
+    }
+
+    .plaque span {
+      color: var(--accent);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 520px) {
+      .container { padding: 48px 20px 80px; }
+      .project { grid-template-columns: 1fr; }
+      .project-arrow { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="org-label">ConsciousNode SoftWorks</div>
+    <h1>Everything I made,<br><span>nothing lost.</span></h1>
+    <p class="tagline">Browser-native tools built from first principles. Single file. Zero dependencies. Offline first. Computational folk art.</p>
+  </header>
+
+  <div class="philosophy">
+    <p>The browser is bare metal. A single HTML file can train a neural network, render a voice interface, run a language model, and persist its own state — with nothing installed, nothing uploaded, nothing phoned home.</p>
+    <p><strong>Xinu principle:</strong> do one thing well, then ask what else it can do within the same constraints.</p>
+  </div>
+
+  <div class="section-label">Projects</div>
+  <div class="projects">
+
+    <a class="project" href="https://consciousnode.github.io/HTMLNLM/" target="_blank">
+      <div>
+        <div class="project-name">HTMLNLM</div>
+        <div class="project-desc">A full RWKV-v7 neural language model that trains, aligns, and runs inference entirely in the browser. No Python. No server. No dependencies. Ternary weights, Muon optimizer, GRPO reinforcement learning — all in one file.</div>
+        <div class="project-tags">
+          <span class="tag">Neural Network</span>
+          <span class="tag">RWKV-v7</span>
+          <span class="tag">Browser-native</span>
+          <span class="tag">Single file</span>
+        </div>
+      </div>
+      <div class="project-arrow">↗</div>
+    </a>
+
+    <a class="project" href="https://consciousnode.github.io/jidenfurui/jiden_furui_v3-1.html" target="_blank">
+      <div>
+        <div class="project-name">Jiden Furui</div>
+        <div class="project-desc">A self-sealing digital art tool. Every version is locked in amber — the file keeps its own history, each sealed state unreachable to further editing. The work accumulates without being rewritten.</div>
+        <div class="project-tags">
+          <span class="tag">Creative tool</span>
+          <span class="tag">Self-archiving</span>
+          <span class="tag">Single file</span>
+        </div>
+      </div>
+      <div class="project-arrow">↗</div>
+    </a>
+
+    <a class="project" href="https://consciousnode.github.io/chromatrack/Chromatrack_Final.html" target="_blank">
+      <div>
+        <div class="project-name">Chromatrack</div>
+        <div class="project-desc">Color palette management and tracking tool. Browser-native, no upload required. Works with your local files directly.</div>
+        <div class="project-tags">
+          <span class="tag">Design tool</span>
+          <span class="tag">Browser-native</span>
+          <span class="tag">Single file</span>
+        </div>
+      </div>
+      <div class="project-arrow">↗</div>
+    </a>
+
+    <a class="project" href="https://consciousnode.github.io/combatsgameofdoom/" target="_blank">
+      <div>
+        <div class="project-name">Combat's Game of Doom</div>
+        <div class="project-desc">A browser game. Because constraint engineering applies to games too.</div>
+        <div class="project-tags">
+          <span class="tag">Game</span>
+          <span class="tag">Browser-native</span>
+          <span class="tag">Single file</span>
+        </div>
+      </div>
+      <div class="project-arrow">↗</div>
+    </a>
+
+  </div>
+
+  <footer>
+    <div class="footer-line">
+      <a href="https://github.com/ConsciousNode" target="_blank">github.com/ConsciousNode</a>
+      &nbsp;·&nbsp;
+      Greenwood, South Carolina
+    </div>
+    <div class="plaque"><span>ConsciousNode SoftWorks</span> — everything I made, nothing lost.</div>
+  </footer>
+
+</div>
+</body>
+</html>
