@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ConsciousNode SoftWorks</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap');
+  /* fonts: system stacks only — no network (xinu) */
 
 :root {
   --bg: #050508;
@@ -84,7 +84,7 @@ nav {
 }
 
 .nav-logo {
-  font-family: 'Space Mono', monospace;
+  font-family: 'Space Mono', ui-monospace, 'Cascadia Mono', Consolas, 'DejaVu Sans Mono', monospace;
   font-size: 13px;
   letter-spacing: 0.15em;
   color: var(--accent2);
@@ -98,7 +98,7 @@ nav {
 }
 
 .nav-links a {
-  font-family: 'DM Mono', monospace;
+  font-family: 'DM Mono', ui-monospace, 'Cascadia Mono', Consolas, 'DejaVu Sans Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -121,7 +121,7 @@ nav {
 }
 
 .hero-eyebrow {
-  font-family: 'DM Mono', monospace;
+  font-family: 'DM Mono', ui-monospace, 'Cascadia Mono', Consolas, 'DejaVu Sans Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.35em;
   color: var(--accent);
@@ -132,7 +132,7 @@ nav {
 }
 
 .hero-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant Garamond', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
   font-size: clamp(52px, 8vw, 112px);
   font-weight: 300;
   line-height: 1.0;
@@ -158,7 +158,7 @@ nav {
 }
 
 .hero-equation {
-  font-family: 'Space Mono', monospace;
+  font-family: 'Space Mono', ui-monospace, 'Cascadia Mono', Consolas, 'DejaVu Sans Mono', monospace;
   font-size: clamp(20px, 3vw, 36px);
   color: var(--gold);
   letter-spacing: 0.05em;
@@ -169,7 +169,7 @@ nav {
 }
 
 .scroll-hint {
-  font-family: 'DM Mono', monospace;
+  font-family: 'DM Mono', ui-monospace, 'Cascadia Mono', Consolas, 'DejaVu Sans Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.3em;
   color: var(--faint);
@@ -202,7 +202,7 @@ section {
 }
 
 .section-tag {
-  font-family: 'DM Mono', monospace;
+  font-family: 'DM Mono', ui-monospace, 'Cascadia Mono', Consolas, 'DejaVu Sans Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.4em;
   color: var(--accent);
@@ -270,7 +270,7 @@ section {
 .theory-card:hover::before { opacity: 1; }
 
 .theory-num {
-  font-family: 'Space Mono', monospace;
+  font-family: 'Space Mono', ui-monospace, 'Cascadia Mono', Consolas, 'DejaVu Sans Mono', monospace;
   font-size: 11px;
   color: var(--accent);
   letter-spacing: 0.2em;
@@ -294,7 +294,7 @@ section {
 }
 
 .theory-card .card-eq {
-  font-family: 'Space Mono', monospace;
+  font-family: 'Space Mono', ui-monospace, 'Cascadia Mono', Consolas, 'DejaVu Sans Mono', monospace;
   font-size: 13px;
   color: var(--gold);
   margin-top: 24px;
@@ -372,7 +372,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'DM Mono', monospace;
+  font-family: 'DM Mono', ui-monospace, 'Cascadia Mono', Consolas, 'DejaVu Sans Mono', monospace;
   font-size: 9px;
   color: var(--accent);
   text-align: center;
@@ -384,7 +384,7 @@ section {
 }
 
 .scale-label {
-  font-family: 'DM Mono', monospace;
+  font-family: 'DM Mono', ui-monospace, 'Cascadia Mono', Consolas, 'DejaVu Sans Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.15em;
   color: var(--accent2);
@@ -397,7 +397,7 @@ section {
 }
 
 .scale-col-head {
-  font-family: 'DM Mono', monospace;
+  font-family: 'DM Mono', ui-monospace, 'Cascadia Mono', Consolas, 'DejaVu Sans Mono', monospace;
   font-size: 9px;
   letter-spacing: 0.2em;
   color: var(--faint);
@@ -488,7 +488,7 @@ section {
 .lineage-desc {
   font-size: 14px;
   color: var(--muted);
-  font-family: 'DM Mono', monospace;
+  font-family: 'DM Mono', ui-monospace, 'Cascadia Mono', Consolas, 'DejaVu Sans Mono', monospace;
   font-weight: 300;
 }
 
@@ -500,7 +500,7 @@ section {
 }
 
 .tag {
-  font-family: 'DM Mono', monospace;
+  font-family: 'DM Mono', ui-monospace, 'Cascadia Mono', Consolas, 'DejaVu Sans Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.1em;
   padding: 4px 10px;
@@ -556,11 +556,11 @@ section {
 }
 
 .result-number span {
-  font-family: 'Space Mono', monospace;
+  font-family: 'Space Mono', ui-monospace, 'Cascadia Mono', Consolas, 'DejaVu Sans Mono', monospace;
 }
 
 .result-label {
-  font-family: 'DM Mono', monospace;
+  font-family: 'DM Mono', ui-monospace, 'Cascadia Mono', Consolas, 'DejaVu Sans Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.2em;
   color: var(--muted);
@@ -584,7 +584,7 @@ section {
 }
 
 .anomaly-title {
-  font-family: 'DM Mono', monospace;
+  font-family: 'DM Mono', ui-monospace, 'Cascadia Mono', Consolas, 'DejaVu Sans Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.3em;
   color: var(--gold);
@@ -631,7 +631,7 @@ section {
 }
 
 .panel-badge {
-  font-family: 'DM Mono', monospace;
+  font-family: 'DM Mono', ui-monospace, 'Cascadia Mono', Consolas, 'DejaVu Sans Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -671,7 +671,7 @@ section {
   margin-top: 28px;
   padding-top: 24px;
   border-top: 1px solid var(--faint);
-  font-family: 'DM Mono', monospace;
+  font-family: 'DM Mono', ui-monospace, 'Cascadia Mono', Consolas, 'DejaVu Sans Mono', monospace;
   font-size: 12px;
   color: var(--faint);
   line-height: 1.8;
@@ -688,7 +688,7 @@ section {
 }
 
 .bootstrap-eq {
-  font-family: 'Space Mono', monospace;
+  font-family: 'Space Mono', ui-monospace, 'Cascadia Mono', Consolas, 'DejaVu Sans Mono', monospace;
   font-size: clamp(20px, 3vw, 32px);
   color: var(--gold);
   margin-bottom: 16px;
@@ -722,7 +722,7 @@ section {
 }
 
 .studio-role {
-  font-family: 'DM Mono', monospace;
+  font-family: 'DM Mono', ui-monospace, 'Cascadia Mono', Consolas, 'DejaVu Sans Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.3em;
   color: var(--accent);
@@ -754,7 +754,7 @@ footer {
 }
 
 .footer-text {
-  font-family: 'DM Mono', monospace;
+  font-family: 'DM Mono', ui-monospace, 'Cascadia Mono', Consolas, 'DejaVu Sans Mono', monospace;
   font-size: 11px;
   color: var(--faint);
   letter-spacing: 0.1em;
@@ -766,7 +766,7 @@ footer {
 }
 
 .footer-links a {
-  font-family: 'DM Mono', monospace;
+  font-family: 'DM Mono', ui-monospace, 'Cascadia Mono', Consolas, 'DejaVu Sans Mono', monospace;
   font-size: 11px;
   color: var(--muted);
   text-decoration: none;
@@ -1230,8 +1230,8 @@ footer {
         <div class="studio-desc">Founding spec v0.1. SimulacraBlock forward pass. .simpip format. Omnimodal stack. SpikeVox, ElasticTok, RIFT endospace. OmniVocal phases 3, 4, 6.</div>
       </div>
       <div class="studio-card reveal" style="background: transparent; border-color: var(--faint); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; gap:16px;">
-        <div style="font-family:'Space Mono',monospace; font-size:32px; color:var(--faint);">✦</div>
-        <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.2em; color:var(--faint);">MARCH 27 → MAY 25, 2026</div>
+        <div style="font-family:'Space Mono', ui-monospace, 'Cascadia Mono', Consolas, 'DejaVu Sans Mono', monospace; font-size:32px; color:var(--faint);">✦</div>
+        <div style="font-family:'DM Mono', ui-monospace, 'Cascadia Mono', Consolas, 'DejaVu Sans Mono', monospace; font-size:11px; letter-spacing:0.2em; color:var(--faint);">MARCH 27 → MAY 25, 2026</div>
         <div style="font-size:15px; color:var(--faint); font-style:italic; line-height:1.6;">Six repos. Six papers. A falsifiability suite. A complete theoretical framework. Under two months.</div>
       </div>
     </div>
